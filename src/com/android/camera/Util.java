@@ -432,7 +432,12 @@ public class Util {
     // Returns Options that set the puregeable flag for Bitmap decode.
     public static BitmapFactory.Options createNativeAllocOptions() {
         BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inNativeAlloc = true;
+        // xt550-libre: inNativeAlloc is hidden API; set it by reflection so
+        // thumbnails still count outside the Dalvik heap on Gingerbread.
+        try {
+            BitmapFactory.Options.class.getField("inNativeAlloc").setBoolean(options, true);
+        } catch (Exception ignored) {
+        }
         return options;
     }
 }

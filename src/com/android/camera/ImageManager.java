@@ -17,7 +17,6 @@
 package com.android.camera;
 
 import com.android.camera.gallery.BaseImageList;
-import com.android.camera.gallery.DrmImageList;
 import com.android.camera.gallery.IImage;
 import com.android.camera.gallery.IImageList;
 import com.android.camera.gallery.ImageList;
@@ -37,7 +36,6 @@ import android.net.Uri;
 import android.os.Environment;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.provider.DrmStore;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Images;
 import android.util.Log;
@@ -316,10 +314,7 @@ public class ImageManager {
                 l.add(new ImageList(cr,
                         Images.Media.INTERNAL_CONTENT_URI, sort, bucketId));
             }
-            if ((inclusion & INCLUDE_DRM_IMAGES) != 0) {
-                l.add(new DrmImageList(
-                        cr, DrmStore.Images.CONTENT_URI, sort, bucketId));
-            }
+            // xt550-libre: DRM images (hidden DrmStore provider) are not listed
         }
 
         // Optimization: If some of the lists are empty, remove them.

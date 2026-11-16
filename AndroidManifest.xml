@@ -1,22 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.android.gallery"
-        android:sharedUserId="android.media">
+        package="com.android.gallery">
 
-    <original-package android:name="com.android.gallery" />
-
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
-
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_SMS" />
 
     <application android:icon="@drawable/ic_launcher_camera"
-            android:label="@string/camera_label"
+            android:label="@string/gallery_picker_label"
             android:taskAffinity="">
         <activity android:name="com.android.camera.GalleryPicker"
                 android:label="@string/gallery_picker_label"
@@ -94,12 +84,24 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="image/*" />
             </intent-filter>
+            <!-- xt550-libre: the Motorola Camera opens its last photo with Gallery3D's REVIEW action -->
+            <intent-filter>
+                <action android:name="com.cooliris.media.action.REVIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
         </activity>
         <activity android:name="com.android.camera.MovieView"
                 android:label="@string/movieviewlabel"
                 android:screenOrientation="landscape"
                 android:configChanges="orientation|keyboardHidden"
                 android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+            <!-- xt550-libre: Camera video review -->
+            <intent-filter>
+                <action android:name="com.cooliris.media.action.REVIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="video/*" />
+            </intent-filter>
              <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />

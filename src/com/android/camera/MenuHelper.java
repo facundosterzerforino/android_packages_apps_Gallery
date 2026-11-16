@@ -713,7 +713,7 @@ public class MenuHelper {
                 }
             });
             videoPlayItem.setIcon(
-                    com.android.internal.R.drawable.ic_menu_play_clip);
+                    android.R.drawable.ic_media_play); // xt550-libre: public icon instead of com.android.internal
             requiresVideoItems.add(videoPlayItem);
         }
 

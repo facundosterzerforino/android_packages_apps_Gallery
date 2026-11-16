@@ -32,6 +32,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:drawablePadding">3dip</item>
     </style>
-    <style name="Theme.DeleteImageDialog" parent="android:style/Theme.Dialog.Alert">
+    <!-- xt550-libre: Theme.Dialog.Alert is not public; Theme.Dialog is -->
+    <style name="Theme.DeleteImageDialog" parent="android:style/Theme.Dialog">
     </style>
 </resources>
